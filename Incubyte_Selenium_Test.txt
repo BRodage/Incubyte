@@ -1,0 +1,63 @@
+package com.text;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+public class Incubyte_Selenium_Test {
+
+	public void createAccount() {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://magento.softwaretestingboard.com/");
+		driver.manage().window().maximize();
+		WebElement CreateAcc_button_Home = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[3]/a"));
+		CreateAcc_button_Home.click();
+		driver.findElement(By.xpath("//*[@id=\"firstname\"]")).sendKeys("abc");
+		driver.findElement(By.xpath("//*[@id=\"lastname\"]")).sendKeys("xyz");
+		driver.findElement(By.xpath("//*[@id=\"email_address\"]")).sendKeys("brodage1010@gmail.com");
+		driver.findElement(By.xpath("//*[@id=\"password\"]")).sendKeys("Test@1234");
+		driver.findElement(By.xpath("//*[@id=\"password-confirmation\"]")).sendKeys("Test@1234");
+		
+		WebElement CreateAcc_button_Customer = driver.findElement(By.xpath("//*[@id=\"form-validate\"]/div/div[1]/button/span"));
+		CreateAcc_button_Customer.click();
+		
+		WebElement SignOut_button_CSLogIn_Details = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button"));
+		SignOut_button_CSLogIn_Details.click();
+		WebElement SignOut = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[3]/a"));
+		SignOut.click();
+		driver.close(); // Closes the current browser window
+	}
+	
+	public void LogInAccount() {
+		WebDriver driver = new ChromeDriver();
+		driver.get("https://magento.softwaretestingboard.com/");
+		driver.manage().window().maximize();
+		
+		driver.get("https://magento.softwaretestingboard.com/");
+		driver.manage().window().maximize();
+		WebElement SignIn_button_Home = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/a"));
+		SignIn_button_Home.click();
+		
+		driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("brodage1010@gmail.com");
+		driver.findElement(By.xpath("//*[@id=\"pass\"]")).sendKeys("Test@1234");
+		WebElement SignIn = driver.findElement(By.xpath("//*[@id=\"send2\"]/span"));
+		SignIn.click();
+		
+		WebElement SignOut_button_CSLogIn_Details = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/span/button"));
+		SignOut_button_CSLogIn_Details.click();
+		WebElement SignOut = driver.findElement(By.xpath("/html/body/div[2]/header/div[1]/div/ul/li[2]/div/ul/li[3]/a"));
+		SignOut.click();
+		driver.close(); // Closes the current browser window
+		
+	}
+	
+	public static void main(String[] args) {
+
+		Incubyte_Selenium_Test IST = new Incubyte_Selenium_Test();
+		IST.createAccount();
+		IST.LogInAccount();
+		
+	}
+
+}
